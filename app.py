@@ -29,8 +29,8 @@ CORS(app, supports_credentials=True)
 
 
 #cleaning/evaluating data
-summarize_data()
-eval_data()
+# summarize_data()
+# eval_data()
 # get data
 
 base_dir = os.path.dirname(os.path.abspath(__file__))
