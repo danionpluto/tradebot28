@@ -9,6 +9,8 @@ from clean_dataset import eval_data, summarize_data
 from flask import send_from_directory
 import os
 
+import numpy as np
+
 
 # get api key for openai
 load_dotenv()
@@ -128,6 +130,19 @@ def ask():
         print("Error from OpenAI:", e)
         return jsonify({"error": str(e)}), 500
 
+base_dir = os.path.dirname(os.path.abspath(__file__))
+csv_path = os.path.join(base_dir, "Trades_sample.csv")
+
+@app.route('/api/trades', methods=['GET'])
+def get_trades():
+    try:
+        df = pd.read_csv(csv_path)
+        # Replace NaN/NaT with None (so jsonify works properly)
+        df = df.replace({np.nan: None})
+        data = df.to_dict(orient='records')
+        return jsonify(data)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 @app.route('/favicon.ico')
 def favicon():

@@ -7,6 +7,33 @@ function App() {
   const [loading, setLoading] = useState(false);
   const messagesEndRef = useRef(null);
 
+  const [trades, setTrades] = useState([]);
+  const [loadingTrades, setLoadingTrades] = useState(true);
+
+  // get trade data 
+
+  useEffect(() => {
+    // fetch trades data from flask backend
+    fetch("/api/trades")
+      .then((res) => res.json())
+      .then((data) => {
+        if (!data.error) {
+          setTrades(data);
+          console.log('got trades');
+
+        } else {
+          console.error("Error loading trades:", data.error);
+        }
+        setLoadingTrades(false);
+      })
+      .catch((err) => {
+        console.error("Fetch error:", err);
+        setLoadingTrades(false);
+      });
+  }, []);
+
+  console.log(trades);
+  console.log(loadingTrades);
   // when asking new question, show that one at the bottom
 
   const scrollToBottom = () => {
@@ -96,6 +123,53 @@ function App() {
           <span className="arrow">➤</span>
         </button>
 
+      </div>
+
+
+
+
+      {/* Display trade data table below chat */}
+      <div style={{ marginTop: "2rem",
+        maxWidth: "90vw",
+        minHeight: '300px',
+        maxHeight: "400px",        // limit max height
+        overflowX: "auto",        // scroll horizontally if needed
+        overflowY: "auto",        // scroll vertically if needed
+        backgroundColor: "white",
+        padding: '1rem',
+        border: "1px solid black", }}>
+        <h3 style = {{color:'black'}}>Trade Sample Data</h3>
+        {loadingTrades ? (
+          <p>Loading trade data...</p>
+        ) : trades.length === 0 ? (
+          <p>No trade data available.</p>
+        ) : (
+          <table
+            border="1"
+            cellPadding="5"
+            cellSpacing="0"
+            style={{ borderStyle: 'dotted', borderColor: 'white', borderCollapse: "collapse", width: "100%" }}
+          >
+            <thead>
+              <tr>
+                {Object.keys(trades[0]).map((key) => (
+                  <th key={key} style={{ backgroundColor: "#eee" }}>
+                    {key}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {trades.map((row, idx) => (
+                <tr key={idx}>
+                  {Object.values(row).map((val, i) => (
+                    <td key={i}>{val}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
     </div>
   );

@@ -8,6 +8,8 @@
   padding: 2rem;
   max-width: 600;
   margin: 2rem auto;
+  overflow-y: auto;
+  min-height: fit-content;
 }
 @font-face {
   font-family: 'Bambino Bold';
