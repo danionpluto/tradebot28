@@ -32,10 +32,12 @@ CORS(app, supports_credentials=True)
 summarize_data()
 eval_data()
 # get data
-csv_path = os.path.join(os.path.dirname(__file__), "trade_profits_summary.csv")
+
+base_dir = os.path.dirname(os.path.abspath(__file__))
+csv_path = os.path.join(base_dir, "trade_profits_summary.csv")
 df = pd.read_csv(csv_path)
 
-summary_path = os.path.join(os.path.dirname(__file__), "trade_summary.csv")
+summary_path = os.path.join(base_dir, "trade_summary.csv")
 summary = pd.read_csv(summary_path)
 
 
