@@ -8,6 +8,7 @@ The dataset was cleaned and basic data analysis was performed to determine thing
 
 Open AI API was given the analysis and summary and used to process the natural language questions provided by the user, with questions like "What advice would you give this trader to better manage their risk?" in mind. The analysis and summary were given in the prompt to the API to try to minimize error on mathematical calculation and the script to analyze them could be used for any file with a similar csv structure. 
 
+I also added the table for viewing under the chatbot. Always recommend double checking!
 Future Steps: 
 
 Add authentification to allow for users to track their trades month by month.
