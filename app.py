@@ -60,9 +60,11 @@ def create_prompt(question: str) -> str:
             Answer the question clearly but dont provide excess work, just the final answer.
             
             Make sure that you use the monetary amounts when asked about net values, percentages etc. and that you dont include the deposit rows when calculating anything related to profit. 
-            Then ask if you can be of any more assitance.
+            
             
             If they ask about general trading advice like minimizing risk, maximizing profits, use knowledge about the market.
+            
+            Then ask if you can be of any more assitance in a conversational tone.
 
             Answer:
             """
