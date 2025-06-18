@@ -15,7 +15,7 @@ load_dotenv()
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 
-app = Flask(__name__, static_folder='chat/build', static_url_path='')
+app = Flask(__name__, static_folder='chat/build', static_url_path='/')
 
 
 # CORS(
