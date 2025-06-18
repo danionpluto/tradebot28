@@ -86,7 +86,7 @@ def eval_data():
         "Win Rate (%)": 100 * (df["Net Profit"] > 0).sum() / df[df["Type"] == "Trade STC/BTO"].shape[0],
         "Average Net Profit": df.loc[df["Type"] == "Trade STC/BTO", "Net Profit"].mean(),
         "Median Net Profit": df.loc[df["Type"] == "Trade STC/BTO", "Net Profit"].median(),
-        "Max Profit": df["Net Profit"].max(),
+        "Max Profit": df[df["Type"] != "Deposit"]["Net Profit"].max(),
         "Max Loss": df["Net Profit"].min()
     }
 

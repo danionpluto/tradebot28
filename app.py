@@ -60,7 +60,7 @@ def create_prompt(question: str) -> str:
             Answer the question clearly but dont provide excess work, just the final answer.
             
             Make sure that you use the monetary amounts when asked about net values, percentages etc. and that you dont include the deposit rows when calculating anything related to profit. 
-            Then give a suggestion for another question user can ask based on what is available in the dataset summary and analysis in a conversational tone.
+            Then ask if you can be of any more assitance.
             
             If they ask about general trading advice like minimizing risk, maximizing profits, use knowledge about the market.
 
