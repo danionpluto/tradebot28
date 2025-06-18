@@ -18,16 +18,16 @@ function App() {
 
   // Generate greeting prompt on first load
   useEffect(() => {
-  fetch("/ask", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ is_first: true }),
-  })
-    .then(res => res.json())
-    .then(data => {
-      setMessages([{ sender: "bot", text: data.answer }]);
-    });
-}, []);
+    fetch("/ask", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ is_first: true }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        setMessages([{ sender: "bot", text: data.answer }]);
+      });
+  }, []);
 
   // message to send question to API
   const sendMessage = async () => {
@@ -87,10 +87,10 @@ function App() {
         <div ref={messagesEndRef} />
       </div>
 
-      <div className = 'submit-question'>
+      <div className='submit-question'>
         <textarea rows={2} placeholder="Type your question and press Enter..." value={input}
-        onChange={(e) => setInput(e.target.value)} onKeyDown={handleKeyDown} disabled={loading}
-        className="chat-input"
+          onChange={(e) => setInput(e.target.value)} onKeyDown={handleKeyDown} disabled={loading}
+          className="chat-input"
         />
         <button onClick={sendMessage} disabled={loading || !input.trim()} className="chat-send-button">
           <span className="arrow">➤</span>
