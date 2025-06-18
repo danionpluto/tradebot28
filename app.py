@@ -18,10 +18,6 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 app = Flask(__name__, static_folder='chat/build', static_url_path='')
 
 
-@app.errorhandler(404)
-def not_found(e):
-    # Serve React index.html for all other routes for React Router
-    return send_from_directory(app.static_folder, 'index.html')
 # CORS(
 #     app,
 #     resources={r"/ask": {"origins": "http://localhost:3000"}},
@@ -119,6 +115,11 @@ def ask():
     except Exception as e:
         print("Error from OpenAI:", e)
         return jsonify({"error": str(e)}), 500
+
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(app.static_folder, 'favicon.ico')
 
 #added for deployment  
 @app.route('/', defaults={'path': ''})
