@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/static/css/main.dcc42307.css",
-    "main.js": "/static/js/main.72044063.js",
+    "main.js": "/static/js/main.966e70a6.js",
     "static/js/453.0cca5ab0.chunk.js": "/static/js/453.0cca5ab0.chunk.js",
     "static/media/BambinoBold.otf": "/static/media/BambinoBold.2604c3bceb8727229d40.otf",
     "index.html": "/index.html",
     "main.dcc42307.css.map": "/static/css/main.dcc42307.css.map",
-    "main.72044063.js.map": "/static/js/main.72044063.js.map",
+    "main.966e70a6.js.map": "/static/js/main.966e70a6.js.map",
     "453.0cca5ab0.chunk.js.map": "/static/js/453.0cca5ab0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.dcc42307.css",
-    "static/js/main.72044063.js"
+    "static/js/main.966e70a6.js"
   ]
 }

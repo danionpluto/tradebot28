@@ -5,7 +5,6 @@ function App() {
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
-  const messagesEndRef = useRef(null);
 
   const [trades, setTrades] = useState([]);
   const [loadingTrades, setLoadingTrades] = useState(true);
@@ -35,13 +34,19 @@ function App() {
   console.log(trades);
   console.log(loadingTrades);
   // when asking new question, show that one at the bottom
+  const chatContainerRef = useRef(null);
+  const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
+  const container = chatContainerRef.current;
+  if (container) {
+    container.scrollTop = container.scrollHeight;
+  }
+};
+
+useEffect(() => {
+  scrollToBottom();
+}, [messages]);
 
   // Generate greeting prompt on first load
   useEffect(() => {
@@ -97,7 +102,12 @@ function App() {
   return (
     <div className="App" >
       <h1 className='gradient-title' style={{ textAlign: "center" }}>TradeBot</h1>
-      <div className="chat-window">
+      <div className="chat-window" ref={chatContainerRef}
+  style={{
+    height: "400px",      // fixed height
+    overflowY: "auto",   // scroll vertically if content overflows
+    border: "1px solid #ccc",
+  }}>
         {messages.length === 0 && !loading && (
           <div className="chat-loading"></div>
         )}
@@ -137,7 +147,7 @@ function App() {
         overflowY: "auto",        // scroll vertically if needed
         backgroundColor: "white",
         padding: '1rem',
-        border: "1px solid black", }}>
+        borderWidth: "1rem", borderStyle: 'solid', borderColor: '#19171D',}}>
         <h3 style = {{color:'black'}}>Trade Sample Data</h3>
         {loadingTrades ? (
           <p>Loading trade data...</p>
@@ -148,7 +158,7 @@ function App() {
             border="1"
             cellPadding="5"
             cellSpacing="0"
-            style={{ borderStyle: 'dotted', borderColor: 'white', borderCollapse: "collapse", width: "100%" }}
+            style={{ borderStyle: 'solid', borderColor: '#19171D', fontFamily: 'Lucida Sans', borderCollapse: "collapse", width: "100%" }}
           >
             <thead>
               <tr>
