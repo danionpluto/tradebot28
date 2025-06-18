@@ -122,7 +122,9 @@ def ask():
 @app.route('/favicon.ico')
 def favicon():
     return send_from_directory(app.static_folder, 'favicon.ico')
-
+@app.errorhandler(404)
+def not_found(e):
+    return send_from_directory(app.static_folder, 'index.html')
 #added for deployment  
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
