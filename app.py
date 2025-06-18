@@ -36,8 +36,12 @@ CORS(app, supports_credentials=True)
 summarize_data()
 eval_data()
 # get data
-df = pd.read_csv("trade_profits_summary.csv")
-summary = pd.read_csv("trade_summary.csv")
+csv_path = os.path.join(os.path.dirname(__file__), "trade_profits_summary.csv")
+df = pd.read_csv(csv_path)
+
+summary_path = os.path.join(os.path.dirname(__file__), "trade_summary.csv")
+summary = pd.read_csv(summary_path)
+
 
 def create_prompt(question: str) -> str:
     sample_data = df.to_csv(index=False)
