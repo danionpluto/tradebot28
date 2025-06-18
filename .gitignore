@@ -21,10 +21,7 @@ backend/venv/
 # testing
 /coverage
 
-# production
-/build
-/chat/build
-/backend/build
+
 
 # misc
 .DS_Store
