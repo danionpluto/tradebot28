@@ -10,7 +10,7 @@ chat/.env
 venv/
 backend/venv/
 
-build/
+
 
 
 # dependencies
