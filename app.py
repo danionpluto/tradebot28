@@ -53,11 +53,14 @@ def create_prompt(question: str) -> str:
             
             and some precalculated analysis : {summarycsv}
 
-            Using the dataset summary AND analysis (check if the answer is in either file), answer this question clearly but dont provide excess work, just the final answer:
+            First see if these files include any of the calculated values needed to answer this question. 
 
             Question: {question}
             
-            Make sure that you use the monetary amounts when asked about net values, percentages etc. and that you dont include the deposit rows when calculating anything related to profit. Then give a suggestion for another question user can ask based on what is available in the dataset summary and analysis in a conversational tone.
+            Answer the question clearly but dont provide excess work, just the final answer.
+            
+            Make sure that you use the monetary amounts when asked about net values, percentages etc. and that you dont include the deposit rows when calculating anything related to profit. 
+            Then give a suggestion for another question user can ask based on what is available in the dataset summary and analysis in a conversational tone.
             
             If they ask about general trading advice like minimizing risk, maximizing profits, use knowledge about the market.
 

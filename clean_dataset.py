@@ -95,3 +95,5 @@ def eval_data():
     summary_df.to_csv("trade_summary.csv", index=False)
 
     print("Saved trade_analysis.csv")
+summarize_data()
+eval_data()
